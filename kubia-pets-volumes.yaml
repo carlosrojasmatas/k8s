@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-1
+spec:
+  capacity:
+    storage: 100Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: local-storage
+  local:
+    path: /tmp/pvs/pv-1
+  nodeAffinity:
+    required:
+     nodeSelectorTerms:
+       - matchExpressions:
+         - key: kubernetes.io/hostname
+           operator: In
+           values:
+             - k-local-worker
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-2
+spec:
+  capacity:
+    storage: 100Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: local-storage
+  local:
+    path: /tmp/pvs/pv-2
+  nodeAffinity:
+    required:
+     nodeSelectorTerms:
+       - matchExpressions:
+         - key: kubernetes.io/hostname
+           operator: In
+           values:
+             - k-local-worker2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-3
+spec:
+  capacity:
+    storage: 100Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: local-storage
+  local:
+    path: /tmp/pvs/pv-3
+  nodeAffinity:
+    required:
+     nodeSelectorTerms:
+       - matchExpressions:
+         - key: kubernetes.io/hostname
+           operator: In
+           values:
+             - k-local-worker3

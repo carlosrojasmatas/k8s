@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-live
+  labels:
+    name: kubia
+spec:
+  containers:
+  - name: kubia-live
+    image: crojasmatas/kubia:0.3
+    imagePullPolicy: Always
+    ports:
+      - containerPort: 8080
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 8080
